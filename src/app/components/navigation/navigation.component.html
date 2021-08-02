@@ -1,0 +1,6 @@
+<div *ngFor="let button of buttons"
+  [routerLink]="button.url"
+  class="navigation-button mat-app-background"
+>
+  <strong>{{ button.label }}</strong>
+</div>
