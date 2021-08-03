@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'explore', component: ExploreComponent },
   { path: 'collection', component: CollectionComponent },
   { path: 'wishlist', component: WishlistComponent },
-  { path: '**', component: NavigationComponent },
+  { path: '**', redirectTo: "/explore" },
 ];
 
 @NgModule({

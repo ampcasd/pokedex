@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap');
-@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
 html, body { 
   padding: 0;
@@ -15,6 +14,9 @@ button {
   border: 0;
   padding: 0;
   cursor: pointer;
+  background: none;
+  color: #ffff;
+
   &:focus {
     outline: 0;
   }

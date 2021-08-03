@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationButton } from './navigation-button.interface';
 
 @Component({
@@ -6,17 +6,12 @@ import { NavigationButton } from './navigation-button.interface';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
 
   buttons: NavigationButton[] = [
-    { url: '/explore', label: 'Explore Pokemon' },
-    { url: '/collection', label: 'Pokemon I\'ve caught' },
-    { url: '/wishlist', label: 'Pokemon Wishlist' },
+    { url: '/explore', label: 'Explore' },
+    { url: '/collection', label: 'Collection' },
+    { url: '/wishlist', label: 'Wishlist' },
   ]
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,9 +1,45 @@
 @import '../../../assets/styles/colors.scss';
 
-.navigation-button {
-  width: 100%;
-  padding: 1em;  
-  margin: 2em;
-  background: var(--color-primary);
+nav {
+  background: $primary;
+  color: #ffff;
+  padding: 1em 0;
+  line-height: 1em;
+  display: flex;
+}
+
+h1 {
+  margin: 0 2em;
+  align-self: center;
+}
+
+.buttons {
+  display: flex;
+}
+
+h1, .navigation-button {
   cursor: pointer;
+}
+
+.navigation-button {
+  padding: 1em;
+  margin: 1em;
+  border-radius: 12%;
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  transition: background 0.5s ease;
+}
+
+.selected span {
+  font-weight: 700;
+  padding-bottom: 10px;
+  border-bottom: solid rgba(255, 255, 255, .5) 2px;
+}
+
+@media (max-width: 520px) {
+  nav, .buttons {
+    flex-direction: column;
+    text-align: center;
+  }
 }

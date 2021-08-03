@@ -1,1 +1,7 @@
-<p>pokemon-details works!</p>
+<ng-container *ngIf="pokemon | async as pokemon">
+
+  <img [src]="pokemon" alt="">
+
+  <p>{{ pokemon.name }}</p>
+
+</ng-container>

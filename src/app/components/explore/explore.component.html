@@ -1,3 +1,7 @@
 <search></search>
 
-<pokemon-grid></pokemon-grid>
+<pokemon-grid
+  [pokemon]="pokemon | async"
+  [filteredPokemon]="filteredPokemon | async"
+  [pagination]="pagination | async"
+></pokemon-grid>
