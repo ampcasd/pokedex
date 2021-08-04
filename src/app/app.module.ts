@@ -15,7 +15,6 @@ import { CollectionComponent } from './components/collection/collection.componen
 import { ExploreComponent } from './components/explore/explore.component';
 import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
 import { PokemonGridComponent } from './components/pokemon-grid/pokemon-grid.component';
-import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
@@ -27,7 +26,12 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { PokemonSummaryComponent } from './components/pokemon-summary/pokemon-summary.component';
 import { NgxsModule } from '@ngxs/store';
 import { PokemonState } from './store/pokemon.store';
-import { ExponentialStrengthPipe } from './pipes/dash-to-whitespace.pipe';
+import { DashToWhitespacePipe } from './pipes/dash-to-whitespace.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PokemonUrlMapPipe } from './pipes/pokemon-url-map.pipe';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +40,13 @@ import { ExponentialStrengthPipe } from './pipes/dash-to-whitespace.pipe';
     PokemonGridComponent,
     PokemonDetailsComponent,
     WishlistComponent,
-    PokemonListComponent,
     NavigationComponent,
     CollectionComponent,
     ExploreComponent,
     PokemonSummaryComponent,
-    ExponentialStrengthPipe,
+    DashToWhitespacePipe,
+    PokemonUrlMapPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +64,9 @@ import { ExponentialStrengthPipe } from './pipes/dash-to-whitespace.pipe';
     LayoutModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
     NgxsModule.forRoot([PokemonState])
   ],
   providers: [HttpClient],

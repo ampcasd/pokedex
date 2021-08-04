@@ -1,9 +1,9 @@
 @import '../../../assets/styles/colors.scss';
 
 nav {
-  background: $primary;
+  background: linear-gradient(0deg,#b40943,#e91e63);
+  position: sticky;
   color: #ffff;
-  padding: 1em 0;
   line-height: 1em;
   display: flex;
 }
@@ -26,7 +26,7 @@ h1, .navigation-button {
   margin: 1em;
   border-radius: 12%;
   &:hover {
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(0, 0, 0, 0.1);
   }
   transition: background 0.5s ease;
 }
@@ -34,7 +34,7 @@ h1, .navigation-button {
 .selected span {
   font-weight: 700;
   padding-bottom: 10px;
-  border-bottom: solid rgba(255, 255, 255, .5) 2px;
+  border-bottom: solid rgba(255, 255, 255, 1) 2px;
 }
 
 @media (max-width: 520px) {

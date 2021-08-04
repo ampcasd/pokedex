@@ -1,35 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Store } from '@ngxs/store';
-import { Url } from 'src/app/services/search.service';
-import { FocusPokemonDetails, GetPokemonDetails } from 'src/app/store/pokemon.store';
-import { PokemonDetailsComponent, PokemonDetailsModalConfiguration } from '../pokemon-details/pokemon-details.component';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { FocusPokemonDetails } from 'src/app/store/pokemon.actions';
+import { PokemonDetails, PokemonName } from 'src/app/store/pokemon.store';
 
 @Component({
   selector: 'pokemon-summary',
   templateUrl: './pokemon-summary.component.html',
   styleUrls: ['./pokemon-summary.component.scss']
 })
-export class PokemonSummaryComponent implements OnInit {
+export class PokemonSummaryComponent {
+
+  @Select('pokemon', 'pokemon') pokemonDetails: Observable<Map<PokemonName, PokemonDetails>>;
 
   @Input() pokemonName: string;
   @Input() pokemonUrl: string;
 
   constructor(
-    private dialogService: MatDialog, 
     private store: Store
   ) { }
 
-  ngOnInit(): void {
-  }
-
-  openDetails(url: Url): void {
-    this.store.dispatch(new FocusPokemonDetails(this.pokemonName, this.pokemonUrl))
-    
-    const data: PokemonDetailsModalConfiguration = {
-      url
-    }
-    this.dialogService.open(PokemonDetailsComponent, { data })
+  openDetails(): void {
+    this.store.dispatch(new FocusPokemonDetails(this.pokemonName, this.pokemonUrl));
   }
 
 }

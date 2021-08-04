@@ -1,18 +1,18 @@
-import { Url } from "../services/search.service";
+import { Url } from '../services/search.service';
 
 export interface GetPokemonDetailsResponse {
-  abilities: { 
-    ability: { 
-      name: string; 
-      url: string 
+  abilities: {
+    ability: {
+      name: string;
+      url: string
     }[];
     is_hidden: boolean;
     slot: number;
   };
   base_experience: number;
-  forms: { 
-    name: string; 
-    url: string 
+  forms: {
+    name: string;
+    url: string
   }[];
   game_indices: {
     game_index: number;
@@ -25,7 +25,7 @@ export interface GetPokemonDetailsResponse {
   held_items: any[];
   id: number;
   is_default: boolean;
-  location_area_encounters: Url,
+  location_area_encounters: Url;
   moves: {
     move: {
       name: string;
@@ -69,7 +69,7 @@ export interface GetPokemonDetailsResponse {
       }
       versions: any;
     }
-  }
+  };
   stats: {
     base_stat: number;
     effort: number;
@@ -84,6 +84,6 @@ export interface GetPokemonDetailsResponse {
       name: string;
       url: string;
     }
-  }[]
+  }[];
   weight: number;
-};
+}

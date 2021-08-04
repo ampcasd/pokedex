@@ -1,0 +1,22 @@
+.hero {
+  text-align: center;
+
+  mat-icon {
+    cursor: pointer;
+    margin: 0 5px;
+  }
+}
+
+.pokemon-image {
+  height: 200px;
+  width: 200px;
+}
+
+ul {
+  columns: 4;
+}
+
+.moves-list {
+  width: max-content;
+  padding-right: 30px;
+}

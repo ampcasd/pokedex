@@ -18,3 +18,14 @@
   letter-spacing: 0.5px;
   line-height: 2;
 }
+
+mat-spinner {
+  display: flex;
+  margin: 150px auto;
+}
+
+@media (max-width: 520px) {
+  .grid {
+    margin: unset;
+  }
+}

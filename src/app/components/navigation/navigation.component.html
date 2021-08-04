@@ -1,5 +1,9 @@
-<nav>
-  <h1 routerLink="/"><strong>Pokédex</strong></h1>
+<nav class="mat-elevation-z6">
+  <h1 routerLink="/">
+    <strong>
+      Pokédex
+    </strong>
+  </h1>
   <div class="buttons">
     <div *ngFor="let button of buttons"
       [routerLink]="button.url" 

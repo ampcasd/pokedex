@@ -1,24 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Subject } from 'rxjs';
 import { debounceTime, takeUntil, tap } from 'rxjs/operators';
-import { PokemonBasicInfo, PokemonSearchService } from 'src/app/services/search.service';
-import { FindPokemon } from 'src/app/store/pokemon.store';
+import { FindPokemon } from 'src/app/store/pokemon.actions';
 
 @Component({
   selector: 'search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   value: string;
-  options: PokemonBasicInfo[];
   inputChanged = new Subject<string>();
 
   private unsubscribe = new Subject<void>();
 
-  constructor(private searchService: PokemonSearchService, private store: Store) { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
     this.subscribeToInputChanges();
@@ -31,12 +29,12 @@ export class SearchComponent implements OnInit {
 
   private subscribeToInputChanges(): void {
     this.inputChanged.pipe(
-      debounceTime(10),
+      debounceTime(100),
       tap((input: string) => {
-        this.store.dispatch(new FindPokemon(input))
+        this.store.dispatch(new FindPokemon(input));
       }),
       takeUntil(this.unsubscribe)
-    ).subscribe()
+    ).subscribe();
   }
 
 }

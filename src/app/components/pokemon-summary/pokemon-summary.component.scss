@@ -1,3 +1,21 @@
-p {
+.tile {
+  text-align: center;
   cursor: pointer;
+
+  &:hover {
+    font-weight: 700;
+  }
+
+  img {
+    border-radius: 10px;
+  }
+
+  &:hover img {
+    background: rgba(0, 0, 0, 0.15);
+    transition: ease 0.5s;
+  }
+}
+
+mat-spinner {
+  margin: 20px; 
 }

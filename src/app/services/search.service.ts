@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { GetPokemonDetailsResponse } from '../interfaces/pokemon-details-response.interface';
-import { PokemonDetails } from '../store/pokemon.store';
+import { NotificationService } from './notification.service';
 
 export type Url = string;
 
 export interface GetPokemonListResponse {
-  count: number,
-  next: Url,
-  previous: Url,
+  count: number;
+  next: Url;
+  previous: Url;
   results: PokemonBasicInfo[];
 }
 
 export interface PokemonBasicInfo {
-  name: string,
-  url: Url
+  name: string;
+  url: Url;
 }
 
 @Injectable({
@@ -24,32 +24,29 @@ export interface PokemonBasicInfo {
 })
 export class PokemonSearchService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private notificationService: NotificationService,
+  ) { }
 
-  search(): Observable<GetPokemonListResponse> {
+  getPokemonList(): Observable<GetPokemonListResponse> {
     return this.http.get<GetPokemonListResponse>(
       `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20000`
     ).pipe(
       catchError((error: HttpErrorResponse) => {
+        this.notificationService.showNotification('There is something wrong with the server, and Pokedéx might not work correctly.');
         throw error;
       })
-    )
+    );
   }
 
-  getPokemon(url: string): Observable<GetPokemonDetailsResponse> {
+  getPokemonDetails(url: string): Observable<GetPokemonDetailsResponse> {
     return this.http.get<GetPokemonDetailsResponse>(url).pipe(
-      // map((response: GetPokemonDetailsResponse) => normalizePokemonDetails(response)),
       catchError((error: HttpErrorResponse) => {
+        this.notificationService.showNotification('There is something wrong with the server, and Pokedéx might not work correctly.');
         throw error;
       })
-    )
+    );
   }
 
 }
-
-// function normalizePokemonDetails(response: GetPokemonDetailsResponse): PokemonDetails {
-//   return {
-//     id: response.id,
-//     abilities: 
-//   }
-// }

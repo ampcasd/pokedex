@@ -1,1 +1,19 @@
-<p (click)="openDetails(pokemonUrl)">{{ pokemonName | dashToWhitespace }}</p>
+<div 
+  class="tile" 
+  (click)="openDetails()"
+>
+  <img
+    *ngIf="(pokemonDetails | async).get(pokemonName) as pokemonDetails; else spinner"
+    [src]="pokemonDetails.sprites.front_default" 
+    [alt]="pokemonName + ' image'"
+    class="pokemon-image"
+  >
+
+  <ng-template #spinner>
+    <mat-spinner diameter="50"></mat-spinner>
+  </ng-template>
+  
+  <p>
+    {{ pokemonName | dashToWhitespace | titlecase }}
+  </p>
+</div>

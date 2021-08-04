@@ -4,7 +4,7 @@ import { NavigationButton } from './navigation-button.interface';
 @Component({
   selector: 'navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss']
+  styleUrls: ['./navigation.component.scss', '../../app.component.scss']
 })
 export class NavigationComponent {
 
@@ -12,6 +12,6 @@ export class NavigationComponent {
     { url: '/explore', label: 'Explore' },
     { url: '/collection', label: 'Collection' },
     { url: '/wishlist', label: 'Wishlist' },
-  ]
+  ];
 
 }

@@ -1,1 +1,3 @@
-<p>wishlist works!</p>
+<pokemon-grid
+  [pokemon]="pokemon | async | buildMap:(pokemonUrls | async)"
+></pokemon-grid>

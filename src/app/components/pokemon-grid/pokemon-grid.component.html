@@ -1,28 +1,35 @@
+<ng-container *ngIf="showSpinner; else grid">
+  <mat-spinner></mat-spinner>
+</ng-container>
 
-<div
-  *ngIf="pokemon?.size; else message"
-  class="grid"
->
+<ng-template #grid>
 
-  <pokemon-summary
-    *ngFor="let pokemon of filteredPokemon | keyvalue"
-    [pokemonName]="pokemon.key"
-    [pokemonUrl]="pokemon.value"
-  ></pokemon-summary>
+  <div
+    *ngIf="pokemon?.size; else message"
+    class="grid"
+  >
+  
+    <pokemon-summary
+      *ngFor="let pokemon of pokemon | keyvalue"
+      [pokemonName]="pokemon.key"
+      [pokemonUrl]="pokemon.value"
+    ></pokemon-summary>
+  
+  </div>
+  
+  <ng-template #message>
+    <div class="no-pokemon-message">
+      No Pokémon found... <br>
+      <h1>😢</h1>
+    </div>
+  </ng-template>
+  
+  <mat-paginator
+    *ngIf="pagination"
+    [length]="pagination.length"
+    [pageSize]="pagination.pageSize"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="paginate($event)"
+  ></mat-paginator>
 
-</div>
-
-<ng-template #message>
-  <p class="no-pokemon-message">
-    No Pokémon found... <br>
-    :(
-  </p>
 </ng-template>
-
-<mat-paginator 
-  [length]="pagination.length"
-  [pageSize]="pagination.pageSize"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  aria-label="Select page"
-  (page)="paginate($event)"
-></mat-paginator>

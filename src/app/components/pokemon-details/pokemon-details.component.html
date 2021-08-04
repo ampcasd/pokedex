@@ -1,7 +1,52 @@
-<ng-container *ngIf="pokemon | async as pokemon">
+<div class="hero">
 
-  <img [src]="pokemon" alt="">
+  <img 
+    [src]="data.pokemon.sprites.front_default" 
+    [alt]="data.pokemon.name + ' image'"
+    class="pokemon-image"
+  >
+  
+  <h1>{{ data.pokemon.name | titlecase }}</h1> 
 
-  <p>{{ pokemon.name }}</p>
+  <mat-icon 
+    [matTooltip]="ownershipTooltip"
+    [style.color]="isOwned ? 'yellow' : 'white'"
+    (click)="toggleOwnership()"
+  >
+    verified
+  </mat-icon>
 
-</ng-container>
+  <mat-icon
+    [matTooltip]="wishlistTooltip"
+    [style.color]="isOwned ? 'grey' : isWished ? 'yellow' : 'white'"
+    (click)="toggleWish()"
+  >
+    star_border
+  </mat-icon>
+
+</div>
+
+<h2>Abilities:</h2>
+<ul>
+  <li *ngFor="let ability of data.pokemon.abilities">{{ ability.ability.name }}</li>
+</ul>
+
+<h2>Statistics:</h2>
+<mat-dialog-content>
+  <ul 
+    [style.columns]="statisticsColumns"
+    [class.moves-list]="breakStatistics"
+  >
+    <li *ngFor="let stat of data.pokemon.stats">{{ stat.stat.name }}</li>
+  </ul>
+</mat-dialog-content>
+
+<h2>Moves:</h2>
+<mat-dialog-content>
+  <ul 
+    [class.moves-list]="breakMoves"
+    [style.columns]="movesColumns"
+  >
+    <li *ngFor="let move of data.pokemon.moves">{{ move.move.name }}</li>
+  </ul>
+</mat-dialog-content>

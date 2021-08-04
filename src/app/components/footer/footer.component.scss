@@ -1,0 +1,33 @@
+.footer {
+  height: 50px;
+  display: flex;
+  line-height: 1em;
+  color: #ffff;
+  background: linear-gradient(0deg, #e91e63,#b40943);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  .row {
+    align-items: center;
+    height: 27px;
+    display: flex;
+    
+    a {
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: normal;
+      color: white;
+    }
+
+    img {
+      height: 20px;
+    }
+  }
+
+  .dates {
+    font-size: x-small;
+  }
+
+}
+

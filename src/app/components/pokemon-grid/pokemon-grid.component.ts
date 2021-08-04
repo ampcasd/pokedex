@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Url } from 'src/app/services/search.service';
-import { SlicePokemon, PokemonName } from 'src/app/store/pokemon.store';
+import { SlicePokemon } from 'src/app/store/pokemon.actions';
 
 export interface Pagination {
   pageSize: number;
@@ -14,19 +14,15 @@ export interface Pagination {
   templateUrl: './pokemon-grid.component.html',
   styleUrls: ['./pokemon-grid.component.scss']
 })
-export class PokemonGridComponent implements OnInit {
-  
+export class PokemonGridComponent {
+
   @Input() pokemon: Map<string, Url>;
-  @Input() filteredPokemon: Map<string, Url>;
-  @Input() pagination: Pagination
+  @Input() pagination: Pagination;
+  @Input() showSpinner: boolean;
 
   constructor(private store: Store) { }
 
-  ngOnInit(): void {
-
-  }
-
-  paginate(event: any) {
+  paginate(event: any): void {
     this.store.dispatch(new SlicePokemon(event));
   }
 }

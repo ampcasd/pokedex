@@ -1,13 +1,22 @@
 <mat-form-field class="example-form-field" appearance="fill">
+
   <mat-label>Find Pokemon</mat-label>
+
   <input 
+    [(ngModel)]="value"
     matInput 
     type="text" 
     placeholder="Type name"
-    [(ngModel)]="value"
     (ngModelChange)="inputChanged.next($event)"
   >
-  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+
+  <button 
+    *ngIf="value" 
+    matSuffix 
+    mat-icon-button 
+    (click)="value = ''; inputChanged.next('')"
+  >
     <mat-icon>close</mat-icon>
   </button>
+
 </mat-form-field>
